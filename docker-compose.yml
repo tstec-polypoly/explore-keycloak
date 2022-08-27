@@ -10,9 +10,9 @@ services:
       # HOST:CONTAINER
       - "5437:5432"
     environment:
-      - POSTGRES_DB=inf_keycloak
-      - POSTGRES_USER=inf_keycloak_user
-      - POSTGRES_PASSWORD=inf_keycloak_pass
+      POSTGRES_DB: inf_keycloak
+      POSTGRES_USER: inf_keycloak_user
+      POSTGRES_PASSWORD: inf_keycloak_pass
   inf_keycloak:
     container_name: inf_keycloak
     build:
