@@ -1,11 +1,29 @@
+FROM maven:latest as magic-link-builder
+
+WORKDIR /
+RUN git clone https://github.com/p2-inc/keycloak-magic-link.git
+WORKDIR /keycloak-magic-link
+RUN git checkout f532f153a1ac03117307a03eb152c5c61e4c3141
+RUN mvn clean install
+
 FROM quay.io/keycloak/keycloak:latest as builder
 
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
 ENV KC_FEATURES=token-exchange
 ENV KC_DB=postgres
-# Download custom providers
+
+#############################
+# Set up custom providers
+
+# A Service Provider that adds a metrics endpoint to Keycloak.
+# https://github.com/aerogear/keycloak-metrics-spi
 RUN curl -sL https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar -o /opt/keycloak/providers/keycloak-metrics-spi-2.5.3.jar
+
+# Magic link plugin
+# https://github.com/p2-inc/keycloak-magic-link
+COPY --from=magic-link-builder /keycloak-magic-link/target/keycloak-magic-link-0.1-SNAPSHOT.jar /opt/keycloak/providers/keycloak-magic-link-0.1-SNAPSHOT.jar
+
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:latest
