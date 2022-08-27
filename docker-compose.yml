@@ -1,8 +1,16 @@
 # !!! Docker Compose for Local Development Only
 version: "3.9"
 services:
-  inf_keycloak_pgsql:
-    container_name: inf_keycloak_pgsql
+  keycloak_mailhog:
+    image: mailhog/mailhog
+    container_name: keycloak_mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
+  keycloak_pgsql:
+    container_name: keycloak_pgsql
     image: postgres
     volumes:
       - ./pgsql:/var/lib/postgresql/data
@@ -10,11 +18,11 @@ services:
       # HOST:CONTAINER
       - "5437:5432"
     environment:
-      POSTGRES_DB: inf_keycloak
-      POSTGRES_USER: inf_keycloak_user
-      POSTGRES_PASSWORD: inf_keycloak_pass
-  inf_keycloak:
-    container_name: inf_keycloak
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak_user
+      POSTGRES_PASSWORD: keycloak_pass
+  keycloak:
+    container_name: keycloak
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -22,7 +30,7 @@ services:
       # HOST:CONTAINER
       - "8037:8443"
     depends_on:
-      - inf_keycloak_pgsql
+      - keycloak_pgsql
     environment:
       # Server
       KC_HOSTNAME: localhost
@@ -30,6 +38,6 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       # Database
-      KC_DB_URL: jdbc:postgresql://inf_keycloak_pgsql:5432/inf_keycloak
-      KC_DB_USERNAME: inf_keycloak_user
-      KC_DB_PASSWORD: inf_keycloak_pass
+      KC_DB_URL: jdbc:postgresql://keycloak_pgsql:5432/keycloak
+      KC_DB_USERNAME: keycloak_user
+      KC_DB_PASSWORD: keycloak_pass
