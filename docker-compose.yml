@@ -1,0 +1,35 @@
+# !!! Docker Compose for Local Development Only
+version: "3.9"
+services:
+  inf_keycloak_pgsql:
+    container_name: inf_keycloak_pgsql
+    image: postgres
+    volumes:
+      - ./pgsql:/var/lib/postgresql/data
+    ports:
+      # HOST:CONTAINER
+      - "5437:5432"
+    environment:
+      - POSTGRES_DB=inf_keycloak
+      - POSTGRES_USER=inf_keycloak_user
+      - POSTGRES_PASSWORD=inf_keycloak_pass
+  inf_keycloak:
+    container_name: inf_keycloak
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      # HOST:CONTAINER
+      - "8037:8443"
+    depends_on:
+      - inf_keycloak_pgsql
+    environment:
+      # Server
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 8037
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      # Database
+      KC_DB_URL: jdbc:postgresql://inf_keycloak_pgsql:5432/inf_keycloak
+      KC_DB_USERNAME: inf_keycloak_user
+      KC_DB_PASSWORD: inf_keycloak_pass
