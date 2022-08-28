@@ -18,9 +18,9 @@ python-versions = ">=3.6"
 argon2-cffi-bindings = "*"
 
 [package.extras]
-tests = ["pytest", "hypothesis", "coverage[toml] (>=5.0.2)"]
-docs = ["furo", "sphinx-notfound-page", "sphinx"]
-dev = ["furo", "sphinx-notfound-page", "sphinx", "pytest", "hypothesis", "coverage[toml] (>=5.0.2)", "tomli", "cogapp", "pre-commit"]
+dev = ["cogapp", "coverage[toml] (>=5.0.2)", "furo", "hypothesis", "pre-commit", "pytest", "sphinx", "sphinx-notfound-page", "tomli"]
+docs = ["furo", "sphinx", "sphinx-notfound-page"]
+tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pytest"]
 
 [[package]]
 name = "argon2-cffi-bindings"
@@ -34,7 +34,7 @@ python-versions = ">=3.6"
 cffi = ">=1.0.1"
 
 [package.extras]
-dev = ["pytest", "cogapp", "pre-commit", "wheel"]
+dev = ["cogapp", "pre-commit", "pytest", "wheel"]
 tests = ["pytest"]
 
 [[package]]
@@ -49,7 +49,7 @@ python-versions = "*"
 six = "*"
 
 [package.extras]
-test = ["pytest", "astroid (<=2.5.3)"]
+test = ["astroid (<=2.5.3)", "pytest"]
 
 [[package]]
 name = "astunparse"
@@ -71,10 +71,10 @@ optional = false
 python-versions = ">=3.5"
 
 [package.extras]
-dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "zope.interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit", "cloudpickle"]
-docs = ["furo", "sphinx", "zope.interface", "sphinx-notfound-page"]
-tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "zope.interface", "cloudpickle"]
-tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "cloudpickle"]
+dev = ["cloudpickle", "coverage[toml] (>=5.0.2)", "furo", "hypothesis", "mypy (>=0.900,!=0.940)", "pre-commit", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "sphinx", "sphinx-notfound-page", "zope.interface"]
+docs = ["furo", "sphinx", "sphinx-notfound-page", "zope.interface"]
+tests = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy (>=0.900,!=0.940)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "zope.interface"]
+tests_no_zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy (>=0.900,!=0.940)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins"]
 
 [[package]]
 name = "backcall"
@@ -96,8 +96,8 @@ python-versions = ">=3.6.0"
 soupsieve = ">1.2"
 
 [package.extras]
-lxml = ["lxml"]
 html5lib = ["html5lib"]
+lxml = ["lxml"]
 
 [[package]]
 name = "bleach"
@@ -112,8 +112,8 @@ six = ">=1.9.0"
 webencodings = "*"
 
 [package.extras]
-dev = ["mypy (==0.961)", "black (==22.3.0)", "wheel (==0.37.1)", "twine (==4.0.1)", "tox (==3.25.0)", "Sphinx (==4.3.2)", "pytest (==7.1.2)", "pip-tools (==6.6.2)", "hashin (==0.17.0)", "flake8 (==4.0.1)", "build (==0.8.0)"]
 css = ["tinycss2 (>=1.1.0,<1.2)"]
+dev = ["Sphinx (==4.3.2)", "black (==22.3.0)", "build (==0.8.0)", "flake8 (==4.0.1)", "hashin (==0.17.0)", "mypy (==0.961)", "pip-tools (==6.6.2)", "pytest (==7.1.2)", "tox (==3.25.0)", "twine (==4.0.1)", "wheel (==0.37.1)"]
 
 [[package]]
 name = "cffi"
@@ -179,7 +179,7 @@ fastcore = ">=1.5.5"
 ipython = "*"
 
 [package.extras]
-dev = ["pillow", "matplotlib"]
+dev = ["matplotlib", "pillow"]
 
 [[package]]
 name = "executing"
@@ -201,7 +201,7 @@ python-versions = ">=3.7"
 packaging = "*"
 
 [package.extras]
-dev = ["numpy", "nbdev (>=0.2.39)", "matplotlib", "pillow", "torch", "pandas", "jupyterlab"]
+dev = ["jupyterlab", "matplotlib", "nbdev (>=0.2.39)", "numpy", "pandas", "pillow", "torch"]
 
 [[package]]
 name = "fastjsonschema"
@@ -212,7 +212,7 @@ optional = false
 python-versions = "*"
 
 [package.extras]
-devel = ["colorama", "jsonschema", "json-spec", "pylint", "pytest", "pytest-benchmark", "pytest-cache", "validictory"]
+devel = ["colorama", "json-spec", "jsonschema", "pylint", "pytest", "pytest-benchmark", "pytest-cache", "validictory"]
 
 [[package]]
 name = "ghapi"
@@ -227,7 +227,7 @@ fastcore = ">=1.5.4"
 packaging = "*"
 
 [package.extras]
-dev = ["matplotlib", "jsonref"]
+dev = ["jsonref", "matplotlib"]
 
 [[package]]
 name = "importlib-metadata"
@@ -241,9 +241,9 @@ python-versions = ">=3.7"
 zipp = ">=0.5"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)"]
+docs = ["jaraco.packaging (>=9)", "rst.linker (>=1.9)", "sphinx"]
 perf = ["ipython"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.3)", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "importlib-resources (>=1.3)"]
+testing = ["flufl.flake8", "importlib-resources (>=1.3)", "packaging", "pyfakefs", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-flake8", "pytest-mypy (>=0.9.1)", "pytest-perf (>=0.9.2)"]
 
 [[package]]
 name = "ipykernel"
@@ -267,7 +267,7 @@ tornado = ">=6.1"
 traitlets = ">=5.1.0"
 
 [package.extras]
-test = ["pytest (>=6.0)", "pytest-timeout", "pytest-cov", "pre-commit", "ipyparallel", "flaky"]
+test = ["flaky", "ipyparallel", "pre-commit", "pytest (>=6.0)", "pytest-cov", "pytest-timeout"]
 
 [[package]]
 name = "ipython"
@@ -292,17 +292,17 @@ stack-data = "*"
 traitlets = ">=5"
 
 [package.extras]
-test_extra = ["trio", "pandas", "numpy (>=1.19)", "nbformat", "matplotlib (!=3.2.0)", "curio", "testpath", "pytest-asyncio", "pytest (<7.1)"]
-test = ["testpath", "pytest-asyncio", "pytest (<7.1)"]
-qtconsole = ["qtconsole"]
-parallel = ["ipyparallel"]
-notebook = ["notebook", "ipywidgets"]
-nbformat = ["nbformat"]
-nbconvert = ["nbconvert"]
-kernel = ["ipykernel"]
-doc = ["Sphinx (>=1.3)"]
+all = ["Sphinx (>=1.3)", "black", "curio", "ipykernel", "ipyparallel", "ipywidgets", "matplotlib (!=3.2.0)", "nbconvert", "nbformat", "notebook", "numpy (>=1.19)", "pandas", "pytest (<7.1)", "pytest-asyncio", "qtconsole", "testpath", "trio"]
 black = ["black"]
-all = ["trio", "pandas", "numpy (>=1.19)", "matplotlib (!=3.2.0)", "curio", "testpath", "pytest-asyncio", "pytest (<7.1)", "qtconsole", "ipyparallel", "notebook", "ipywidgets", "nbformat", "nbconvert", "ipykernel", "Sphinx (>=1.3)", "black"]
+doc = ["Sphinx (>=1.3)"]
+kernel = ["ipykernel"]
+nbconvert = ["nbconvert"]
+nbformat = ["nbformat"]
+notebook = ["ipywidgets", "notebook"]
+parallel = ["ipyparallel"]
+qtconsole = ["qtconsole"]
+test = ["pytest (<7.1)", "pytest-asyncio", "testpath"]
+test_extra = ["curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.19)", "pandas", "pytest (<7.1)", "pytest-asyncio", "testpath", "trio"]
 
 [[package]]
 name = "ipython-genutils"
@@ -324,8 +324,8 @@ python-versions = ">=3.6"
 parso = ">=0.8.0,<0.9.0"
 
 [package.extras]
-testing = ["pytest (<7.0.0)", "docopt", "colorama", "Django (<3.1)"]
-qa = ["mypy (==0.782)", "flake8 (==3.8.3)"]
+qa = ["flake8 (==3.8.3)", "mypy (==0.782)"]
+testing = ["Django (<3.1)", "colorama", "docopt", "pytest (<7.0.0)"]
 
 [[package]]
 name = "jinja2"
@@ -354,8 +354,8 @@ attrs = ">=17.4.0"
 pyrsistent = ">=0.14.0,<0.17.0 || >0.17.0,<0.17.1 || >0.17.1,<0.17.2 || >0.17.2"
 
 [package.extras]
-format-nongpl = ["webcolors (>=1.11)", "uri-template", "rfc3986-validator (>0.1.0)", "rfc3339-validator", "jsonpointer (>1.13)", "isoduration", "idna", "fqdn"]
-format = ["webcolors (>=1.11)", "uri-template", "rfc3987", "rfc3339-validator", "jsonpointer (>1.13)", "isoduration", "idna", "fqdn"]
+format = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3987", "uri-template", "webcolors (>=1.11)"]
+format-nongpl = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3986-validator (>0.1.0)", "uri-template", "webcolors (>=1.11)"]
 
 [[package]]
 name = "jupyter-client"
@@ -375,7 +375,7 @@ tornado = ">=6.2"
 traitlets = "*"
 
 [package.extras]
-doc = ["ipykernel", "myst-parser", "sphinx-rtd-theme", "sphinx (>=1.3.6)", "sphinxcontrib-github-alt"]
+doc = ["ipykernel", "myst-parser", "sphinx (>=1.3.6)", "sphinx-rtd-theme", "sphinxcontrib-github-alt"]
 test = ["codecov", "coverage", "ipykernel (>=6.5)", "ipython", "mypy", "pre-commit", "pytest", "pytest-asyncio (>=0.18)", "pytest-cov", "pytest-timeout"]
 
 [[package]]
@@ -391,7 +391,7 @@ pywin32 = {version = ">=1.0", markers = "sys_platform == \"win32\" and platform_
 traitlets = "*"
 
 [package.extras]
-test = ["pytest-timeout", "pytest-cov", "pytest", "pre-commit", "ipykernel"]
+test = ["ipykernel", "pre-commit", "pytest", "pytest-cov", "pytest-timeout"]
 
 [[package]]
 name = "jupyterlab-pygments"
@@ -410,10 +410,10 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, != 3.4.*"
 
 [package.extras]
-source = ["Cython (>=0.29.7)"]
-htmlsoup = ["beautifulsoup4"]
-html5 = ["html5lib"]
 cssselect = ["cssselect (>=0.7)"]
+html5 = ["html5lib"]
+htmlsoup = ["beautifulsoup4"]
+source = ["Cython (>=0.29.7)"]
 
 [[package]]
 name = "markupsafe"
@@ -457,7 +457,7 @@ nest-asyncio = "*"
 traitlets = ">=5.2.2"
 
 [package.extras]
-sphinx = ["autodoc-traits", "mock", "moto", "myst-parser", "Sphinx (>=1.7)", "sphinx-book-theme"]
+sphinx = ["Sphinx (>=1.7)", "autodoc-traits", "mock", "moto", "myst-parser", "sphinx-book-theme"]
 test = ["black", "check-manifest", "flake8", "ipykernel", "ipython", "ipywidgets", "mypy", "nbconvert", "pip (>=18.1)", "pre-commit", "pytest (>=4.1)", "pytest-asyncio", "pytest-cov (>=2.6.1)", "setuptools (>=60.0)", "testpath", "twine (>=1.11.0)", "xmltodict"]
 
 [[package]]
@@ -488,8 +488,8 @@ tinycss2 = "*"
 traitlets = ">=5.0"
 
 [package.extras]
-all = ["ipykernel", "ipython", "ipywidgets (>=7)", "nbsphinx (>=0.2.12)", "pre-commit", "pyppeteer (>=1,<1.1)", "pyqtwebengine (>=5.15)", "pytest", "pytest-cov", "pytest-dependency", "sphinx-rtd-theme", "sphinx (==5.0.2)", "tornado (>=6.1)"]
-docs = ["ipython", "nbsphinx (>=0.2.12)", "sphinx-rtd-theme", "sphinx (==5.0.2)"]
+all = ["ipykernel", "ipython", "ipywidgets (>=7)", "nbsphinx (>=0.2.12)", "pre-commit", "pyppeteer (>=1,<1.1)", "pyqtwebengine (>=5.15)", "pytest", "pytest-cov", "pytest-dependency", "sphinx (==5.0.2)", "sphinx-rtd-theme", "tornado (>=6.1)"]
+docs = ["ipython", "nbsphinx (>=0.2.12)", "sphinx (==5.0.2)", "sphinx-rtd-theme"]
 qtpdf = ["pyqtwebengine (>=5.15)"]
 qtpng = ["pyqtwebengine (>=5.15)"]
 serve = ["tornado (>=6.1)"]
@@ -512,7 +512,7 @@ ghapi = ">=1.0.1"
 PyYAML = "*"
 
 [package.extras]
-dev = ["nbdev-numpy", "nbdev-stdlib", "pandas", "matplotlib", "black"]
+dev = ["black", "matplotlib", "nbdev-numpy", "nbdev-stdlib", "pandas"]
 
 [[package]]
 name = "nbformat"
@@ -529,7 +529,7 @@ jupyter-core = "*"
 traitlets = ">=5.1"
 
 [package.extras]
-test = ["pre-commit", "pytest", "testpath", "check-manifest"]
+test = ["check-manifest", "pre-commit", "pytest", "testpath"]
 
 [[package]]
 name = "nest-asyncio"
@@ -565,9 +565,9 @@ tornado = ">=6.1"
 traitlets = ">=4.2.1"
 
 [package.extras]
-test = ["requests-unixsocket", "pytest-cov", "selenium", "nbval", "testpath", "requests", "coverage", "pytest"]
+docs = ["myst-parser", "nbsphinx", "sphinx", "sphinx-rtd-theme", "sphinxcontrib-github-alt"]
 json-logging = ["json-logging"]
-docs = ["myst-parser", "sphinx-rtd-theme", "sphinxcontrib-github-alt", "nbsphinx", "sphinx"]
+test = ["coverage", "nbval", "pytest", "pytest-cov", "requests", "requests-unixsocket", "selenium", "testpath"]
 
 [[package]]
 name = "packaging"
@@ -597,8 +597,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-testing = ["pytest (<6.0.0)", "docopt"]
-qa = ["mypy (==0.782)", "flake8 (==3.8.3)"]
+qa = ["flake8 (==3.8.3)", "mypy (==0.782)"]
+testing = ["docopt", "pytest (<6.0.0)"]
 
 [[package]]
 name = "pexpect"
@@ -650,7 +650,7 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [package.extras]
-test = ["wmi", "pywin32", "enum34", "mock", "ipaddress"]
+test = ["enum34", "ipaddress", "mock", "pywin32", "wmi"]
 
 [[package]]
 name = "ptyprocess"
@@ -707,7 +707,7 @@ optional = false
 python-versions = ">=3.6.8"
 
 [package.extras]
-diagrams = ["railroad-diagrams", "jinja2"]
+diagrams = ["jinja2", "railroad-diagrams"]
 
 [[package]]
 name = "pyrsistent"
@@ -773,9 +773,9 @@ optional = false
 python-versions = "*"
 
 [package.extras]
-win32 = ["pywin32"]
+nativelib = ["pyobjc-framework-cocoa", "pywin32"]
 objc = ["pyobjc-framework-cocoa"]
-nativelib = ["pywin32", "pyobjc-framework-cocoa"]
+win32 = ["pywin32"]
 
 [[package]]
 name = "six"
@@ -807,7 +807,7 @@ executing = "*"
 pure-eval = "*"
 
 [package.extras]
-tests = ["cython", "littleutils", "pygments", "typeguard", "pytest"]
+tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
 name = "terminado"
@@ -823,7 +823,7 @@ pywinpty = {version = ">=1.1.0", markers = "os_name == \"nt\""}
 tornado = ">=6.1.0"
 
 [package.extras]
-test = ["pytest (>=6.0)", "pytest-timeout", "pre-commit"]
+test = ["pre-commit", "pytest (>=6.0)", "pytest-timeout"]
 
 [[package]]
 name = "tinycss2"
@@ -837,8 +837,8 @@ python-versions = ">=3.6"
 webencodings = ">=0.4"
 
 [package.extras]
-test = ["coverage", "pytest-isort", "pytest-flake8", "pytest-cov", "pytest"]
-doc = ["sphinx-rtd-theme", "sphinx"]
+doc = ["sphinx", "sphinx-rtd-theme"]
+test = ["coverage", "pytest", "pytest-cov", "pytest-flake8", "pytest-isort"]
 
 [[package]]
 name = "tornado"
@@ -857,7 +857,7 @@ optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-test = ["pytest", "pre-commit"]
+test = ["pre-commit", "pytest"]
 
 [[package]]
 name = "wcwidth"
@@ -884,8 +884,8 @@ optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "jaraco.tidelift (>=1.4)"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.3)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
+docs = ["jaraco.packaging (>=9)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx"]
+testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-flake8", "pytest-mypy (>=0.9.1)"]
 
 [metadata]
 lock-version = "1.1"
