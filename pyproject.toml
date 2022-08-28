@@ -8,6 +8,7 @@ authors = ["tstec <tom.stec@polypoly.eu>"]
 python = "^3.9"
 notebook = "^6.4.12"
 nbdev = "^2.2.8"
+requests = "^2.28.1"
 
 [tool.poetry.dev-dependencies]
 
