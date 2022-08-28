@@ -3,7 +3,7 @@ FROM maven:latest as magic-link-builder
 WORKDIR /
 RUN git clone https://github.com/p2-inc/keycloak-magic-link.git
 WORKDIR /keycloak-magic-link
-RUN git checkout f532f153a1ac03117307a03eb152c5c61e4c3141
+RUN git checkout 71b611716a6cebd68590b28aa6bce9c3003c0e32
 RUN mvn clean install
 
 FROM quay.io/keycloak/keycloak:latest as builder
