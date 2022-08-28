@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "explore-keycloak"
+version = "0.1.0"
+description = ""
+authors = ["tstec <tom.stec@polypoly.eu>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+notebook = "^6.4.12"
+nbdev = "^2.2.8"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
