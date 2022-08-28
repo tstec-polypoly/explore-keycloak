@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tstec-polypoly.github.io/explore-keycloak/core.html</loc>
+    <lastmod>2022-08-28T15:26:45.552Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tstec-polypoly.github.io/explore-keycloak/README_START_HERE.html</loc>
+    <lastmod>2022-08-28T15:26:46.226Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tstec-polypoly.github.io/explore-keycloak/index.html</loc>
+    <lastmod>2022-08-28T15:26:46.984Z</lastmod>
+  </url>
 </urlset>

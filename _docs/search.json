@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "foo\n\n foo ()"
+  },
+  {
+    "objectID": "README_START_HERE.html#install-poetry-package-manager",
+    "href": "README_START_HERE.html#install-poetry-package-manager",
+    "title": "explore-keycloak",
+    "section": "Install poetry package manager",
+    "text": "Install poetry package manager\n# From https://python-poetry.org/docs/\ncurl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -\nIf you’ve already got poetry, you might want to…\npoetry self update"
+  },
+  {
+    "objectID": "README_START_HERE.html#install-jupyter-with-nbdev",
+    "href": "README_START_HERE.html#install-jupyter-with-nbdev",
+    "title": "explore-keycloak",
+    "section": "Install Jupyter with nbdev",
+    "text": "Install Jupyter with nbdev\nFrom https://nbdev.fast.ai/01_Tutorials/01_tutorial.html\n# Install jupyter and nbdev in project's environment\npoetry install\n\n# Install nbdev dependancy quarto, see https://quarto.org/docs/get-started/hello/jupyter.html\npoetry run nbdev_install_quarto\n  # Start a new shell and ensure `which quarto` returns a valid path.\n\n# Note: `poetry run nbdev_new` was run to initialize this repository.\n\n# Initialize git hooks for Git-friendly Jupyter.\npoetry run nbdev_install_hooks"
+  },
+  {
+    "objectID": "README_START_HERE.html#documentation",
+    "href": "README_START_HERE.html#documentation",
+    "title": "explore-keycloak",
+    "section": "Documentation",
+    "text": "Documentation\nhttps://tstec-polypoly.github.io/explore-keycloak/"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "explore-keycloak",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation."
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "explore-keycloak",
+    "section": "Install",
+    "text": "Install\npip install explore_keycloak"
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "explore-keycloak",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2"
+  }
+]
