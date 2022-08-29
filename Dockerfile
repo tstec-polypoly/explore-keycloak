@@ -32,7 +32,8 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 
 # for demonstration purposes only, please make sure to use proper certificates in production instead
-RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
+# Note: `-keyalg EC -groupname secp384r1` is strongest current browser supported encryption.
+RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg EC -groupname secp384r1 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
 
 # Download wait-for-it.sh
 RUN curl -sL https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh -o /opt/keycloak/wait-for-it.sh
