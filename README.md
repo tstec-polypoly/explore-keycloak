@@ -5,16 +5,23 @@ explore-keycloak
 
 ## Run Keycloak locally
 
+The also runs postgrsql and docker containers.
+
     docker-compose build
     docker-compose up
 
 ## Local Keycloak access
 
-https://localhost:8037/admin/master/console u: admin p: admin
+<https://localhost:8037/admin/master/console>
+
+- user: admin
+- pass: admin
 
 ## Mailhog
 
-Check for test mails send by Keycloak http://localhost:8025/
+Check for test mails send by Keycloak
+
+<http://localhost:8025/>
 
 ## Using Jupyter notebook with nbdev
 
@@ -50,5 +57,7 @@ From https://nbdev.fast.ai/01_Tutorials/01_tutorial.html
 `poetry run jupyter notebook`
 
 ### nbdev generated documentation
+
+Update README.md with `poetry run nbdev_readme`
 
 https://tstec-polypoly.github.io/explore-keycloak/
