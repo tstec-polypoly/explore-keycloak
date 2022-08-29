@@ -6,7 +6,7 @@ WORKDIR /keycloak-magic-link
 RUN git checkout 71b611716a6cebd68590b28aa6bce9c3003c0e32
 RUN mvn clean install
 
-FROM quay.io/keycloak/keycloak:latest as builder
+FROM quay.io/keycloak/keycloak:18.0 as builder
 
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
@@ -26,7 +26,8 @@ COPY --from=magic-link-builder /keycloak-magic-link/target/keycloak-magic-link-0
 
 RUN /opt/keycloak/bin/kc.sh build
 
-FROM quay.io/keycloak/keycloak:latest
+FROM quay.io/keycloak/keycloak:18.0
+
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 
