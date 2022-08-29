@@ -38,4 +38,8 @@ RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysi
 RUN curl -sL https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh -o /opt/keycloak/wait-for-it.sh
 RUN chmod +x /opt/keycloak/wait-for-it.sh
 
-ENTRYPOINT ["/opt/keycloak/wait-for-it.sh", "--strict", "keycloak_pgsql:5432", "--", "/opt/keycloak/bin/kc.sh", "start", "--optimized"]
+# For keycloak 18
+ENTRYPOINT ["/opt/keycloak/wait-for-it.sh", "-t", "30", "--strict", "keycloak_pgsql:5432", "--", "/opt/keycloak/bin/kc.sh", "start"]
+
+# For keycloak 19
+# ENTRYPOINT ["/opt/keycloak/wait-for-it.sh", "-t", "30", "--strict", "keycloak_pgsql:5432", "--", "/opt/keycloak/bin/kc.sh", "start", "--optimized"]
