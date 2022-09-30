@@ -9,6 +9,10 @@ python = "^3.9"
 notebook = "^6.4.12"
 nbdev = "^2.2.8"
 requests = "^2.28.1"
+prettyprinter = "^0.18.0"
+PyJWT = "^2.5.0"
+cryptography = "^38.0.1"
+
 
 [tool.poetry.dev-dependencies]
 
