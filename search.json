@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Explore Keycloak",
+    "section": "",
+    "text": "Magic Link Experiment"
+  },
+  {
+    "objectID": "index.html#run-keycloak-locally",
+    "href": "index.html#run-keycloak-locally",
+    "title": "Explore Keycloak",
+    "section": "Run Keycloak locally",
+    "text": "Run Keycloak locally\nThis also runs postgresql and mailhog containers.\ndocker-compose build\ndocker-compose up"
+  },
+  {
+    "objectID": "index.html#local-keycloak-access",
+    "href": "index.html#local-keycloak-access",
+    "title": "Explore Keycloak",
+    "section": "Local Keycloak access",
+    "text": "Local Keycloak access\nhttps://localhost:8037/admin/master/console\n\nuser: admin\npass: admin"
+  },
+  {
+    "objectID": "index.html#keycloak-configuration",
+    "href": "index.html#keycloak-configuration",
+    "title": "Explore Keycloak",
+    "section": "Keycloak Configuration",
+    "text": "Keycloak Configuration"
+  },
+  {
+    "objectID": "index.html#mailhog",
+    "href": "index.html#mailhog",
+    "title": "Explore Keycloak",
+    "section": "Mailhog",
+    "text": "Mailhog\nCheck for test mails send by Keycloak\nhttp://localhost:8025/"
+  },
+  {
+    "objectID": "index.html#using-jupyter-notebook-with-nbdev",
+    "href": "index.html#using-jupyter-notebook-with-nbdev",
+    "title": "Explore Keycloak",
+    "section": "Using Jupyter notebook with nbdev",
+    "text": "Using Jupyter notebook with nbdev\n\nInstall poetry package manager\nNote: Using poetry is easier than Conda.\n# From https://python-poetry.org/docs/\ncurl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -\nIf you’ve already got poetry, you might want to…\npoetry self update\n\n\nInstall Jupyter with nbdev\nFrom https://nbdev.fast.ai/01_Tutorials/01_tutorial.html\n# Install jupyter and nbdev in project's environment\npoetry install\n\n# Install nbdev dependancy quarto, see https://quarto.org/docs/get-started/hello/jupyter.html\npoetry run nbdev_install_quarto\n  # Start a new shell and ensure `which quarto` returns a valid path.\n\n# Note: `poetry run nbdev_new` was run to initialize this repository.\n\n# Initialize git hooks for Git-friendly Jupyter.\npoetry run nbdev_install_hooks\n\n\nStarting Jupyter\npoetry run jupyter notebook\n\n\nnbdev generated documentation\nUpdate README.md with poetry run nbdev_readme\nhttps://tstec-polypoly.github.io/explore-keycloak/"
+  },
+  {
+    "objectID": "README_START_HERE.html#install-poetry-package-manager",
+    "href": "README_START_HERE.html#install-poetry-package-manager",
+    "title": "explore-keycloak",
+    "section": "Install poetry package manager",
+    "text": "Install poetry package manager\n# From https://python-poetry.org/docs/\ncurl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -"
+  },
+  {
+    "objectID": "README_START_HERE.html#install-jupyter-with-nbdev",
+    "href": "README_START_HERE.html#install-jupyter-with-nbdev",
+    "title": "explore-keycloak",
+    "section": "Install Jupyter with nbdev",
+    "text": "Install Jupyter with nbdev\nFrom https://nbdev.fast.ai/01_Tutorials/01_tutorial.html\n# Install jupyter and nbdev in project's environment\npoetry install\n\n# Install nbdev dependancy quarto, see https://quarto.org/docs/get-started/hello/jupyter.html\npoetry run nbdev_install_quarto\n  # Start a new shell and ensure `which quarto` returns a valid path.\n\n# Note: `poetry run nbdev_new` was run to initialize this repository.\n\n# Initialize git hooks for Git-friendly Jupyter.\npoetry run nbdev_install_hooks"
+  },
+  {
+    "objectID": "README_START_HERE.html#documentation",
+    "href": "README_START_HERE.html#documentation",
+    "title": "explore-keycloak",
+    "section": "Documentation",
+    "text": "Documentation\nhttps://tstec-polypoly.github.io/explore-keycloak/"
+  },
+  {
+    "objectID": "keycloak_generate_magic_link.html",
+    "href": "keycloak_generate_magic_link.html",
+    "title": "Keycloak Magic Link Experiments",
+    "section": "",
+    "text": "kc_auth_server_base_url = \"https://localhost:8037/realms/test/\"\nsettings = {\n  'kc_auth_server_base_url'          : kc_auth_server_base_url,\n  'kc_token_endpoint'                : kc_auth_server_base_url + \"protocol/openid-connect/token\",\n  'kc_magic_link_endpoint'           : kc_auth_server_base_url + \"magic-link/\",\n  'kc_service_client_secret'         : \"MCa5A3oYVd5qI1QP0kGYl0YgB6HnhVCE\",\n  'kc_service_client_id'             : \"realm-management\",\n  'kc_magic_link_client_id'          : \"account-console\",\n  'kc_magic_link_expiration_seconds' : 600,\n}\n\n\n############################\n# Get Service account token.\ncallback_url = settings['kc_token_endpoint']\nrequest = requests.post(\n    callback_url,\n    verify=False,\n    headers = {\n      'Content-Type': 'application/x-www-form-urlencoded'\n    },\n    data = {\n        'grant_type':    'client_credentials',\n        'client_id':     settings['kc_service_client_id'],\n        'client_secret': settings['kc_service_client_secret'],\n    }\n)\nservice_access_token = request.json()['access_token']\nservice_access_token\n\n/Users/admin/Library/Caches/pypoetry/virtualenvs/explore-keycloak-hV1l5bXr-py3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'localhost'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings\n  warnings.warn(\n\n\n'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJCV2cxNGNrN2hsNkZMaUYzQlEwWHUydjBQM24yS2tNMlVBNG9xVnZpOXEwIn0.eyJleHAiOjE2NjQ1NTI0NDQsImlhdCI6MTY2NDU1MjE0NCwianRpIjoiMTBiNzNkMzktYWQ4ZC00YzI1LWI5ODAtNjNiZWQxN2YwNTRiIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6ODAzNy9yZWFsbXMvdGVzdCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJjMmY1ZGE5ZS0wZjY0LTQzNDAtODQzNy0xMWMzZjMyYWJmZmEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJyZWFsbS1tYW5hZ2VtZW50IiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLXRlc3QiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsicmVhbG0tbWFuYWdlbWVudCI6eyJyb2xlcyI6WyJtYW5hZ2UtdXNlcnMiLCJ1bWFfcHJvdGVjdGlvbiIsInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiY2xpZW50SWQiOiJyZWFsbS1tYW5hZ2VtZW50IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJjbGllbnRIb3N0IjoiMTcyLjI1LjAuMSIsInByZWZlcnJlZF91c2VybmFtZSI6InNlcnZpY2UtYWNjb3VudC1yZWFsbS1tYW5hZ2VtZW50IiwiY2xpZW50QWRkcmVzcyI6IjE3Mi4yNS4wLjEifQ.I2DD78vSNdAN8WNSe24y0Q8eJyJKdI5UVY_-lL9_Q0DHrvCCq6rg7x0OqkpGguhlqBkULggNJaIWdSdPZNUA4LQWiHc9pEUdqEva5fwjPI0rsmLwY2kE17btRyVqL8GnxKJlhJyDqSkFRgRFmTPOnqW7bVbYVL_ASbVK-v8dq7v_Td89Gh3nqAOPcWFm58hhIwxa1kaMu9e2USvheLjCmxAhlmgETg0J5LMNhC3kYQ2FRUjwNb6k4kwez2nKBkF9bNcnFoPpvz3wf_KE4-nGkdggSpwt1JCHUjMgN2WDM9Al1zvoUGJHdY9Hwn2n9a-BjqK3nTHZlMEiH6ny0m7vIw'\n\n\n\n######################\n# Generate Magic Link.\npayload = {\n    'email':              'test_user@magiclink.test',\n    'client_id':          settings['kc_magic_link_client_id'],\n    'redirect_uri':       'https://httpbin.org/anything',\n    'expiration_seconds': settings['kc_magic_link_expiration_seconds'],\n    'force_create':       \"true\",\n    'send_email':         \"true\",\n    'update_profile':     \"false\",\n}\nrequest = requests.post(\n    settings['kc_magic_link_endpoint'],\n    verify=False,\n    headers = {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json',\n      'Authorization': f'Bearer {service_access_token}',\n    },\n    data=json.dumps(payload)\n)\nmagic_link = request.json()['link']\nmagic_link\n\n/Users/admin/Library/Caches/pypoetry/virtualenvs/explore-keycloak-hV1l5bXr-py3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'localhost'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings\n  warnings.warn(\n\n\n'https://localhost:8037/realms/test/login-actions/action-token?key=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI1MzNiMmIxOS04NTliLTQwN2ItYjk2ZC1mZjVkOTM2NTZhNjAifQ.eyJleHAiOjE2NjQ1NTI3NDQsImlhdCI6MTY2NDU1MjE0NCwianRpIjoiMDZkYWVlOGItYjJhYS00ZTM3LTk0NjgtMTFjOTBlMGJiNzA2IiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6ODAzNy9yZWFsbXMvdGVzdCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjgwMzcvcmVhbG1zL3Rlc3QiLCJzdWIiOiJlZjJlNmM2OS03MjJmLTQ1MTAtYWViYi0zOTliNDA4NjljZGUiLCJ0eXAiOiJleHQtbWFnaWMtbGluayIsImF6cCI6ImFjY291bnQtY29uc29sZSIsIm5vbmNlIjoiMDZkYWVlOGItYjJhYS00ZTM3LTk0NjgtMTFjOTBlMGJiNzA2IiwicmR1IjoiaHR0cHM6Ly9odHRwYmluLm9yZy9hbnl0aGluZyJ9.FFB9BwPp-xNFgsWI6a2PJPiIqAJH4_EQcGAOSM2sRtY&client_id=account-console'\n\n\n\n################################\n# Follow Magic Link and get code\nrequest = requests.get(\n    magic_link,\n    verify=False,\n)\nauth_code = request.json()['args']['code']\nauth_code\n\n/Users/admin/Library/Caches/pypoetry/virtualenvs/explore-keycloak-hV1l5bXr-py3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'localhost'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings\n  warnings.warn(\n/Users/admin/Library/Caches/pypoetry/virtualenvs/explore-keycloak-hV1l5bXr-py3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'localhost'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings\n  warnings.warn(\n/Users/admin/Library/Caches/pypoetry/virtualenvs/explore-keycloak-hV1l5bXr-py3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'httpbin.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings\n  warnings.warn(\n\n\n'1ae64602-f917-493e-a3bc-19e3cefc9f0b.9f106b8a-dd46-49d3-81d0-2fba77539334.d728e743-f924-43a0-b831-b58fb9d9483b'\n\n\n\n#################################\n# Exchange code for token and JWT\npayload = {\n    'grant_type':         'authorization_code',\n    'client_id':          settings['kc_magic_link_client_id'],\n    'code':               auth_code,\n    'redirect_uri':       'https://httpbin.org/anything',\n}\nrequest = requests.post(\n    settings['kc_token_endpoint'],\n    verify=False,\n    data=payload\n)\naccess_token = request.json()['access_token']\nrefresh_token = request.json()['refresh_token']\n\n/Users/admin/Library/Caches/pypoetry/virtualenvs/explore-keycloak-hV1l5bXr-py3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'localhost'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings\n  warnings.warn(\n\n\n\nprint(access_token)\nprint()\nprint(refresh_token)\n\neyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJCV2cxNGNrN2hsNkZMaUYzQlEwWHUydjBQM24yS2tNMlVBNG9xVnZpOXEwIn0.eyJleHAiOjE2NjQ1NTI0NDUsImlhdCI6MTY2NDU1MjE0NSwiYXV0aF90aW1lIjoxNjY0NTUyMTQ0LCJqdGkiOiJjNTYzYTJhMy0zODMzLTRmZGEtYWEzNy05OGIzMWNmMjk3M2MiLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo4MDM3L3JlYWxtcy90ZXN0IiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImVmMmU2YzY5LTcyMmYtNDUxMC1hZWJiLTM5OWI0MDg2OWNkZSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFjY291bnQtY29uc29sZSIsInNlc3Npb25fc3RhdGUiOiI5ZjEwNmI4YS1kZDQ2LTQ5ZDMtODFkMC0yZmJhNzc1MzkzMzQiLCJhY3IiOiIxIiwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjlmMTA2YjhhLWRkNDYtNDlkMy04MWQwLTJmYmE3NzUzOTMzNCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0X3VzZXJAbWFnaWNsaW5rLnRlc3QiLCJlbWFpbCI6InRlc3RfdXNlckBtYWdpY2xpbmsudGVzdCJ9.cp90P07zXwTd2w4WCJXb2aMuafN2m64r2DVDu7tE2QDTB8Rk6LRwiWCaEAEIsD2hdMIZILxme55DVtJgZuyaLlw1mk4wgPlQIPL9FnosKKZ5pOub5RhPnBJfM-yfivInB2Nhl2MazXK37TCOjqoVGdJNZyta8rBNUKqXL0RAgrPl-ZzY7e-VEJjnxsqqxeuuLxjPHh1ONa4XVfZHAxO7LH7CZd78FtsFBdQMr-X5Pa3KkAtp2vSlESqcVKB6rYD484Sv6KFAeIVDaUoiy56CbO3N4NGEULlojoSjOhE2wwebz7xHMPSBNLQHfp85G-A5mYmST3o5x00-VoCTw-Odvw\n\neyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI1MzNiMmIxOS04NTliLTQwN2ItYjk2ZC1mZjVkOTM2NTZhNjAifQ.eyJleHAiOjE2NjQ1NTM5NDUsImlhdCI6MTY2NDU1MjE0NSwianRpIjoiNzM0Nzk0MDUtMWViNC00ZDEwLTllMGYtOTNlZjZlYTc4ZWI0IiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6ODAzNy9yZWFsbXMvdGVzdCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjgwMzcvcmVhbG1zL3Rlc3QiLCJzdWIiOiJlZjJlNmM2OS03MjJmLTQ1MTAtYWViYi0zOTliNDA4NjljZGUiLCJ0eXAiOiJSZWZyZXNoIiwiYXpwIjoiYWNjb3VudC1jb25zb2xlIiwic2Vzc2lvbl9zdGF0ZSI6IjlmMTA2YjhhLWRkNDYtNDlkMy04MWQwLTJmYmE3NzUzOTMzNCIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjlmMTA2YjhhLWRkNDYtNDlkMy04MWQwLTJmYmE3NzUzOTMzNCJ9.anbMKLAAYYEsOV3wQ-bbRJw9bAqwSpszv72xVLHaZ9w\n\n\n\nimport cryptography, jwt\nfrom jwt import ExpiredSignatureError\npublic_key=\"\"\"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyWxR1kkyyIoIhns7Ki5XiQLl+buGHj0YZ+vN7ZNYtxhWKKDQkg587Aki6maacd6PXaUGCZmEE2ZU7JCcziZjK2g9f3ZyUOp3eGwKFZeT2Z3NwkwpYF3hVB0+tAPz5t06y4zo9HqAUHe0xr267g0jofJsSPcTq/4iVwvoBTw8aODQjy3+iCgBKCNnhIUamJwbzz5QbLZw5RgjLrmHMqWfQCB/MNEo0me3Tu8r2sBZVLhY8j3rSfdPMtMj88vXNA+M8rCgTeteZbwo4+3wyFrcP6Yr6u9mhIi3kH/MOneP3p7W6AClBNUyad5ovc38FlQGUMZ4Vp9jiRN/4MwZ7yBwhQIDAQAB\\n-----END PUBLIC KEY-----\"\"\"\ntry:\n  pprint(jwt.decode(access_token, public_key, algorithms=[\"RS256\"], audience='account'))\nexcept ExpiredSignatureError:\n  print(\"Signature Expired\")\n\n{\n    'exp': 1664552445,\n    'iat': 1664552145,\n    'auth_time': 1664552144,\n    'jti': 'c563a2a3-3833-4fda-aa37-98b31cf2973c',\n    'iss': 'https://localhost:8037/realms/test',\n    'aud': 'account',\n    'sub': 'ef2e6c69-722f-4510-aebb-399b40869cde',\n    'typ': 'Bearer',\n    'azp': 'account-console',\n    'session_state': '9f106b8a-dd46-49d3-81d0-2fba77539334',\n    'acr': '1',\n    'resource_access': {\n        'account': {'roles': ['manage-account', 'manage-account-links']}\n    },\n    'scope': 'email profile',\n    'sid': '9f106b8a-dd46-49d3-81d0-2fba77539334',\n    'email_verified': True,\n    'preferred_username': 'test_user@magiclink.test',\n    'email': 'test_user@magiclink.test'\n}"
+  }
+]
