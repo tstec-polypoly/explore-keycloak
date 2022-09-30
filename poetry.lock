@@ -1020,7 +1020,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c7c76467284ad57d152aea58115817ec129baf667f559a7386c1b999fd608fc9"
+content-hash = "1f73907113f429782b9409e7cff695a458e5f7020223c76a584540b814821e77"
 
 [metadata.files]
 appnope = []
