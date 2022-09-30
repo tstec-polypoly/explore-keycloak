@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "explore-keycloak"
+  site-url: "https://tstec-polypoly.github.io/explore-keycloak"
+  description: ""
+  repo-branch: master
+  repo-url: "https://github.com/tstec-polypoly/explore-keycloak"
