@@ -5,7 +5,7 @@ Explore Keycloak
 
 ## Run Keycloak locally
 
-The also runs postgrsql and docker containers.
+This also runs postgresql and mailhog containers.
 
     docker-compose build
     docker-compose up
